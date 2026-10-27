@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>What's Baby's Normal</title>
+  <meta name="description" content="A newborn's handwritten care log, turned into a calm dashboard, with trustworthy places to find answers.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..600&family=Figtree:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="#data" aria-label="What's Baby's Normal, home">
+        <svg class="mark" viewBox="-1.5 -1.5 43 43" aria-hidden="true">
+          <g fill="var(--logo)"><ellipse cx="21.23" cy="11.27" rx="4.6" ry="9.0" transform="rotate(8 21.23 11.27)"/><ellipse cx="27.14" cy="13.57" rx="4.6" ry="9.8" transform="rotate(48 27.14 13.57)"/><ellipse cx="28.42" cy="19.71" rx="4.6" ry="8.6" transform="rotate(88 28.42 19.71)"/><ellipse cx="27.41" cy="25.79" rx="4.6" ry="9.6" transform="rotate(128 27.41 25.79)"/><ellipse cx="21.85" cy="28.72" rx="4.6" ry="9.1" transform="rotate(168 21.85 28.72)"/><ellipse cx="15.45" cy="28.57" rx="4.6" ry="9.9" transform="rotate(208 15.45 28.57)"/><ellipse cx="12.28" cy="23.12" rx="4.6" ry="8.5" transform="rotate(248 12.28 23.12)"/><ellipse cx="11.15" cy="17.12" rx="4.6" ry="9.5" transform="rotate(288 11.15 17.12)"/><ellipse cx="15.22" cy="12.35" rx="4.6" ry="9.2" transform="rotate(328 15.22 12.35)"/><circle cx="20" cy="20" r="8.4"/></g>
+          <circle cx="16.6" cy="19.2" r="2.7" fill="#FFFFFF"/><circle cx="23.4" cy="18.4" r="2.7" fill="#FFFFFF"/>
+          <circle cx="17.5" cy="18.4" r="1.55" fill="#1F2419"/><circle cx="24.3" cy="17.6" r="1.55" fill="#1F2419"/>
+          <path d="M18.6 23.1q1.3 1.3 2.6 0" fill="none" stroke="#1F2419" stroke-width="1.1" stroke-linecap="round"/>
+        </svg>
+        <b>What's Baby's Normal</b>
+      </a>
+      <nav class="tabs" aria-label="Main">
+        <a href="#data" data-tab="data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Baby's data</a>
+        <a href="#answers" data-tab="answers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M10 9.2a2 2 0 1 1 2.6 1.9c-.4.2-.6.5-.6.9v.4"/></svg>Find an answer</a>
+        <a href="#built" data-tab="built"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M6 3h12v18H6zM9 3v18M12 8h4M12 12h4"/></svg>How it was built</a>
+      </nav>
+      <span class="pill sample top-pill" data-sample-only title="Generated placeholder figures until the notebook is transcribed">Sample data</span>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== TAB 1: BABY'S DATA ===================== -->
+    <div id="tab-data" data-tab-panel="data" hidden>
+      <section class="block first" id="dashboard" aria-labelledby="dash-h">
+        <div class="wrap">
+          <div class="page-title">
+            <div>
+              <h1 id="dash-h">Baby's first seven weeks</h1>
+              <p>Every feed, sleep and nappy from the notebook, checked against the published range for her age. Normal is a range, not a number.</p>
+            </div>
+            <span class="pill sample" data-sample-only title="Generated placeholder figures until the notebook is transcribed">Sample data</span>
+          </div>
+          <div class="dash">
+            <div class="controls">
+              <div class="views" role="group" aria-label="Show one">
+                <button type="button" data-view="daily">Day</button>
+                <button type="button" data-view="weekly">Week</button>
+                <button type="button" data-view="monthly">Month</button>
+                <button type="button" data-view="overview">All 7 weeks</button>
+              </div>
+              <div id="period-wrap" class="period"></div>
+              <div id="metric-wrap" class="trend-pick" hidden>
+                <span class="trend-lbl" id="trend-lbl">Trend lines</span>
+                <div class="checks" id="trend-toggles" role="group" aria-labelledby="trend-lbl"></div>
+              </div>
+            </div>
+            <div class="main">
+              <div id="summary" class="kpis" aria-live="polite"></div>
+              <div id="view-body"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="rhythm" aria-labelledby="rhythm-h">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <h2 id="rhythm-h">The 24-hour rhythm</h2>
+              <p>One line per day, like the notebook, midnight to midnight. Watch the night-time sleep blocks lengthen as a routine forms.</p>
+            </div>
+            <div class="legend" id="rhythm-legend"></div>
+          </div>
+          <div class="card notebook">
+            <div id="rhythm-chart" class="rhythm"></div>
+            <div id="rhythm-insights" class="insights"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="growth" aria-labelledby="growth-h">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <h2 id="growth-h">Weight against growth centiles</h2>
+              <p>Every weigh-in, plotted on the UK-WHO girls' weight-for-age chart (official RCPCH data), the same reference used in the red book.</p>
+            </div>
+          </div>
+          <div class="grid12">
+            <div class="card span8">
+              <div class="card-head"><h3>Weight, birth to week 7</h3><span class="sub">Kilograms, by days since birth</span></div>
+              <div class="chart tall"><canvas id="growth-chart" role="img" aria-label="Weight in kilograms by day, with centile lines"></canvas></div>
+              <div class="legend" id="growth-legend"></div>
+              <p class="fine">Centile lines start at 2 weeks, as on the printed RCPCH chart: most babies lose some weight in the first days, so the lines aren't drawn over that dip. Dots at Day 1 show the birth centiles (UK90 term reference).</p>
+            </div>
+            <div class="card span4">
+              <h3>What the weigh-ins show</h3>
+              <div class="facts" id="growth-stats"></div>
+              <div class="callout">Born at 37 weeks, which counts as term. UK practice only corrects for gestational age below 37 weeks, so no correction applies and she's plotted on the standard chart.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="wrap cta-wrap">
+        <aside class="cta">
+          <div>
+            <h3>Wondering if something is normal?</h3>
+            <p>Check NHS and Mayo Clinic guidance, see what other parents say, or find a professional.</p>
+          </div>
+          <a class="btn" href="#answers">Find an answer</a>
+        </aside>
+      </div>
+    </div>
+
+    <!-- ===================== TAB 2: FIND AN ANSWER ===================== -->
+    <div id="tab-answers" data-tab-panel="answers" hidden>
+      <div class="wrap hero">
+        <h1>One question, three kinds of answer you can trust</h1>
+        <p>Kept separate on purpose: what the guidance says, what other parents have been through, and real professionals when a question needs a person.</p>
+      </div>
+
+      <section class="block tight">
+        <div class="wrap">
+          <aside class="flags" aria-labelledby="rf-h">
+            <h2 id="rf-h"><span aria-hidden="true">⚠</span> Get help now. Don't wait for an answer here.</h2>
+            <ul>
+              <li>A temperature of <strong>38°C or higher</strong> in a baby under 3 months</li>
+              <li>A <strong>weak, high-pitched or unusual cry</strong></li>
+              <li><strong>Green, yellow or bloody vomit</strong>, or <strong>projectile vomiting</strong></li>
+              <li><strong>Blood in her poo</strong>, or <strong>refusing feeds</strong></li>
+            </ul>
+            <p class="rf-call">Call <a href="tel:999">999</a> in an emergency, or <a href="tel:111">NHS 111</a> for urgent advice.</p>
+          </aside>
+
+          <div class="ask-grid">
+            <section class="card ask-card" aria-labelledby="guidance-h">
+              <h3 id="guidance-h">Ask the guidance</h3>
+              <p class="desc">Answers come only from a fixed library of NHS and Mayo Clinic pages, with a source after every point. It can't diagnose.</p>
+              <div class="src-tag"><span class="pill ok">NHS</span><span class="pill ok">NHS Healthier Together</span><span class="pill ok">Mayo Clinic</span></div>
+              <form id="guidance-form" class="field">
+                <label for="guidance-q" class="visually-hidden">Your question</label>
+                <textarea id="guidance-q" rows="1" maxlength="500" placeholder="e.g. How many wet nappies should she have at 3 weeks?" required></textarea>
+                <button class="btn" type="submit">Ask</button>
+              </form>
+              <div class="chips" id="guidance-suggestions" aria-label="Suggested questions"></div>
+              <div id="guidance-answer" class="answer" aria-live="polite"></div>
+              <details class="library">
+                <summary>See the full source library</summary>
+                <ul id="library-list"></ul>
+              </details>
+            </section>
+
+            <div class="ask-side">
+              <section class="card ask-card" aria-labelledby="parents-h">
+                <h3 id="parents-h">Ask other parents</h3>
+                <p class="desc">See whether other families went through the same thing. Opens Reddit search in a new tab.</p>
+                <form id="reddit-form" class="field">
+                  <label for="reddit-q" class="visually-hidden">Search</label>
+                  <input id="reddit-q" type="search" placeholder="e.g. evening fussiness 5 weeks" required>
+                  <label for="reddit-sub" class="visually-hidden">Community</label>
+                  <select id="reddit-sub">
+                    <option value="NewParents">r/NewParents</option>
+                    <option value="beyondthebump">r/beyondthebump</option>
+                    <option value="breastfeeding">r/breastfeeding</option>
+                    <option value="FormulaFeeders">r/FormulaFeeders</option>
+                    <option value="ScienceBasedParenting">r/ScienceBasedParenting</option>
+                    <option value="">All of Reddit</option>
+                  </select>
+                  <button class="btn alt" type="submit">Search Reddit <span aria-hidden="true">↗</span></button>
+                </form>
+                <div class="chips" id="reddit-examples" aria-label="Example searches"></div>
+                <p class="fine strong">These are shared experiences, not medical advice.</p>
+              </section>
+
+              <section class="card ask-card" aria-labelledby="pro-h">
+                <h3 id="pro-h">Find a professional</h3>
+                <p class="desc">When a question needs a person, start here. Your health visitor is a good first call for everyday worries.</p>
+                <div class="links">
+                  <a class="link-row" href="https://www.doctify.com/uk" target="_blank" rel="noopener">
+                    <div><b>Doctify</b><span>Search reviewed paediatricians and specialists</span></div>
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg>
+                  </a>
+                  <a class="link-row" href="https://www.nhs.uk/service-search/find-a-gp" target="_blank" rel="noopener">
+                    <div><b>NHS: Find a GP</b><span>Register with or contact a local practice</span></div>
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg>
+                  </a>
+                  <a class="link-row" href="https://111.nhs.uk/" target="_blank" rel="noopener">
+                    <div><b>NHS 111 online</b><span>Urgent advice, any time</span></div>
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg>
+                  </a>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===================== TAB 3: HOW THIS WAS BUILT ===================== -->
+    <div id="tab-built" data-tab-panel="built" hidden>
+      <div class="wrap hero">
+        <h1>From a handwritten notebook to a dashboard</h1>
+        <p>The raw data, the decisions behind the design, and what the data can and can't tell you.</p>
+      </div>
+
+      <section class="block tight" aria-label="Project in numbers">
+        <div class="wrap"><div class="steps four" id="built-stats"></div></div>
+      </section>
+
+      <section class="block">
+        <div class="wrap about">
+          <div class="card">
+            <h3>Why I built it</h3>
+            <p>New parents face conflicting advice and a constant "is this normal?" worry. When my niece was born, my sister and brother-in-law wrote down every feed, nap, nappy, weigh-in, bath, temperature and fussy spell in a notebook: two or three pages a day for about seven weeks.</p>
+            <p>Writing it down gave them a routine, but they had no way to see the data, and the internet stayed noisy. This site closes both gaps. It turns the notebook into a clear picture, and it points to answers you can trust, keeping guidance, other parents' experiences and professional help separate.</p>
+            <p>I come from paediatric non-profit management, resource coordination and building tools for families, and I'm moving into health tech. This project is where those meet.</p>
+          </div>
+          <div class="card">
+            <h3>How it was made</h3>
+            <ol class="method">
+              <li><span class="n">1</span><div><b>Photographed the notebook</b>Two or three handwritten pages a day, from birth to week 7.</div></li>
+              <li><span class="n">2</span><div><b>Transcribed every entry</b>Into structured data: one row per feed, sleep, nappy, weigh-in, bath, temperature or note.</div></li>
+              <li><span class="n">3</span><div><b>Removed personal details</b>No names, and calendar dates replaced with days since birth.</div></li>
+              <li><span class="n">4</span><div><b>Compared against the evidence</b>NHS and Mayo Clinic guidance, and the UK-WHO growth centiles.</div></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="wrap">
+          <div class="sec-head"><div><h2>From notebook to data</h2><p>One page of the handwritten log beside the structured rows it became.</p></div></div>
+          <div class="ba">
+            <figure class="photo">
+              <img id="notebook-img" alt="A redacted page from the notebook (placeholder)" width="600" height="800">
+              <figcaption id="notebook-caption"></figcaption>
+            </figure>
+            <div class="card">
+              <div class="card-head"><h3 id="notebook-title">Transcribed rows</h3><span class="sub" id="notebook-count"></span></div>
+              <div class="tbl-wrap tbl-scroll short"><table id="notebook-rows" class="tbl"></table></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="wrap">
+          <div class="sec-head"><div><h2>The raw data</h2><p>One row per day. Select a column heading to sort.</p></div></div>
+          <div class="card">
+            <div class="tbl-tools">
+              <label for="raw-week" class="visually-hidden">Filter by week</label>
+              <select id="raw-week"></select>
+              <span id="raw-count"></span>
+            </div>
+            <div class="tbl-wrap tbl-scroll"><table id="raw-table" class="tbl"></table></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="wrap">
+          <div class="sec-head"><div><h2>Data dictionary</h2><p>What each field means and how it was recorded.</p></div></div>
+          <div class="card"><div class="tbl-wrap"><table class="tbl dict" id="dict-table"></table></div></div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="wrap">
+          <div class="sec-head"><div><h2>Design decisions</h2></div></div>
+          <div class="decisions">
+            <div><h3>Three kinds of answer, kept apart</h3><p>Guidance, other parents' experiences and professional help answer different needs. Mixing them is how anxious parents end up treating a forum post like medical advice.</p></div>
+            <div><h3>Answers only from fixed sources</h3><p>The guidance box can only use seven named pages and must cite one after every point. If the library doesn't cover a question, it says so and points to a health visitor, GP or NHS 111.</p></div>
+            <div><h3>Normal is a range, not a number</h3><p>Every figure is shown against a reference range for her age, not a single target. Being outside a range is a prompt to ask, not a diagnosis.</p></div>
+            <div><h3>Privacy by default</h3><p>She's "Baby", time is counted in days since birth, notebook photos are redacted, and the family consented to sharing.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="wrap">
+          <div class="sec-head"><div><h2>Limitations</h2></div></div>
+          <div class="card">
+            <ul class="limits">
+              <li>This is <strong>one baby's data</strong>. It shows what was normal for her, not for every baby.</li>
+              <li><strong>Times are approximate</strong>: written by tired parents, often after the fact.</li>
+              <li><strong>Unreadable handwriting was flagged, not guessed</strong>. Flagged entries are marked in the data.</li>
+              <li>The site is <strong>not medical advice</strong>. It points to people and sources who can help.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===================== HIDDEN: DRAFTS (only via #drafts) ===================== -->
+    <div id="tab-drafts" data-tab-panel="drafts" hidden>
+      <div class="wrap hero">
+        <h1>Drafts</h1>
+      </div>
+      <div class="wrap drafts">
+        <div class="draft-banner"><b>Not linked anywhere.</b> Content removed from other pages waits here until you rework it or delete it.</div>
+        <article class="card draft-item">
+          <div class="lbl">Removed from Baby's data · intro</div>
+          <p>Every line in this dashboard started as a pencil note at 3am. Here's what seven weeks of those notes look like when you can finally see them all at once.</p>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span><strong>Not medical advice.</strong> This site shows one baby's care log and links to official guidance. If you're worried about your baby, speak to your health visitor, GP or NHS 111. In an emergency, call 999.</span>
+      <span>Guidance from the NHS, NHS Healthier Together and Mayo Clinic. <a href="#built">How it was built</a></span>
+    </div>
+  </footer>
+
+  <div id="load-error" class="load-error" hidden></div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "whats-babys-normal",
+  "private": true,
+  "type": "module",
+  "description": "A newborn's care log as a calm dashboard, plus trustworthy places to find answers.",
+  "scripts": {
+    "sample-data": "node tools/generate-sample-data.mjs",
+    "growth-reference": "node tools/build-growth-reference.mjs",
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.133.0"
+  }
+}
