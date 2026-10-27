@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>What's Baby's Normal</title>
-  <meta name="description" content="A newborn's handwritten care log, turned into a calm dashboard, with trustworthy places to find answers.">
+  <meta name="description" content="A newborn's handwritten care log, turned into a calm dashboard, with trustworthy places to find answers. Designed and built by Alicia Shamji.">
+  <meta name="author" content="Alicia Shamji">
   <link rel="canonical" href="https://whats-babys-normal.netlify.app/">
   <meta name="theme-color" content="#F3F5EE">
 
@@ -12,7 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="What's Baby's Normal">
   <meta property="og:title" content="What's Baby's Normal: a newborn's first seven weeks, in data">
-  <meta property="og:description" content="A handwritten newborn care log turned into a calm dashboard, with trustworthy NHS answers for new parents. A UK health tech portfolio project.">
+  <meta property="og:description" content="A handwritten newborn care log turned into a calm dashboard, with trustworthy NHS answers for new parents. A UK health tech portfolio project by Alicia Shamji.">
   <meta property="og:url" content="https://whats-babys-normal.netlify.app/">
   <meta property="og:image" content="https://whats-babys-normal.netlify.app/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -21,7 +22,7 @@
   <meta property="og:locale" content="en_GB">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="What's Baby's Normal: a newborn's first seven weeks, in data">
-  <meta name="twitter:description" content="A handwritten newborn care log turned into a calm dashboard, with trustworthy NHS answers for new parents.">
+  <meta name="twitter:description" content="A handwritten newborn care log turned into a calm dashboard, with trustworthy NHS answers for new parents. By Alicia Shamji.">
   <meta name="twitter:image" content="https://whats-babys-normal.netlify.app/assets/og-image.png">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -64,7 +65,10 @@
           <div class="page-title">
             <div>
               <h1 id="dash-h">Baby's first seven weeks</h1>
-              <p>Every feed, sleep and nappy from the notebook, checked against the published range for her age. Normal is a range, not a number.</p>
+              <p>When my niece was born, we wrote down every feed, nap and nappy change — and kept asking, "Is this normal?"</p>
+              <p>I turned seven weeks of handwritten notes into charts that show her patterns alongside trusted health guidance.</p>
+              <p class="intro-tagline">Because normal is a range, not a number.</p>
+              <p class="scope-note">One baby's data, not every baby's. This tool hasn't been clinically evaluated and isn't medical advice. <a href="#built">Read the limitations</a></p>
             </div>
             <span class="pill sample" data-sample-only title="Generated placeholder figures until the notebook is transcribed">Sample data</span>
           </div>
@@ -230,10 +234,26 @@
       <div class="wrap hero">
         <h1>From a handwritten notebook to a dashboard</h1>
         <p>The raw data, the decisions behind the design, and what the data can and can't tell you.</p>
+        <p class="byline">Designed and built by <b>Alicia Shamji</b></p>
       </div>
 
       <section class="block tight" aria-label="Project in numbers">
         <div class="wrap"><div class="steps four" id="built-stats"></div></div>
+      </section>
+
+      <section class="block tight" aria-labelledby="limits-h">
+        <div class="wrap">
+          <div class="card limits-card">
+            <h2 id="limits-h">Limitations: read this first</h2>
+            <ul class="limits">
+              <li>This is <strong>one baby's data</strong>. It shows what was normal for her, not for every baby, and it can't tell you what's normal for yours.</li>
+              <li>The tool <strong>hasn't been clinically evaluated or validated</strong>, and it isn't a medical device. The reference ranges come from published NHS and Mayo Clinic guidance; comparing one baby's log with them is illustrative, not a clinical assessment.</li>
+              <li><strong>Times are approximate</strong>: written by tired parents, often after the fact.</li>
+              <li><strong>Unreadable handwriting was flagged, not guessed</strong>. Flagged entries are marked in the data.</li>
+              <li>The site is <strong>not medical advice</strong>. It points to people and sources who can help.</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section class="block">
@@ -250,7 +270,7 @@
               <li><span class="n">1</span><div><b>Photographed the notebook</b>Two or three handwritten pages a day, from birth to week 7.</div></li>
               <li><span class="n">2</span><div><b>Transcribed every entry</b>Into structured data: one row per feed, sleep, nappy, weigh-in, bath, temperature or note.</div></li>
               <li><span class="n">3</span><div><b>Removed personal details</b>No names, and calendar dates replaced with days since birth.</div></li>
-              <li><span class="n">4</span><div><b>Compared against the evidence</b>NHS and Mayo Clinic guidance, and the UK-WHO growth centiles.</div></li>
+              <li><span class="n">4</span><div><b>Compared with published guidance</b>NHS and Mayo Clinic reference ranges, and the UK-WHO growth centiles.</div></li>
             </ol>
           </div>
         </div>
@@ -305,19 +325,6 @@
         </div>
       </section>
 
-      <section class="block">
-        <div class="wrap">
-          <div class="sec-head"><div><h2>Limitations</h2></div></div>
-          <div class="card">
-            <ul class="limits">
-              <li>This is <strong>one baby's data</strong>. It shows what was normal for her, not for every baby.</li>
-              <li><strong>Times are approximate</strong>: written by tired parents, often after the fact.</li>
-              <li><strong>Unreadable handwriting was flagged, not guessed</strong>. Flagged entries are marked in the data.</li>
-              <li>The site is <strong>not medical advice</strong>. It points to people and sources who can help.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
     </div>
 
     <!-- ===================== HIDDEN: DRAFTS (only via #drafts) ===================== -->
@@ -338,7 +345,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <span><strong>Not medical advice.</strong> This site shows one baby's care log and links to official guidance. If you're worried about your baby, speak to your health visitor, GP or NHS 111. In an emergency, call 999.</span>
-      <span>Guidance from the NHS, NHS Healthier Together and Mayo Clinic. <a href="#built">How it was built</a></span>
+      <span>Designed and built by Alicia Shamji. Guidance from the NHS, NHS Healthier Together and Mayo Clinic. <a href="#built">How it was built</a></span>
     </div>
   </footer>
 

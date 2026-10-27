@@ -448,3 +448,14 @@ section, .block { scroll-margin-top: calc(var(--head-h) + 16px); }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 @media (forced-colors: active) { .sw, .kpi .ico { forced-color-adjust: none; } }
 @media print { .top, .controls, .cta-wrap, .site-footer { display: none; } }
+
+/* scope + authorship */
+.page-title .scope-note { margin-top: 14px; font-size: 14.5px; color: var(--muted); }
+.scope-note a { font-weight: 600; }
+.byline { margin-top: 10px !important; font-size: 14px !important; color: var(--faint) !important; }
+.byline b { color: var(--ink); font-weight: 600; }
+.limits-card { border-left: 4px solid var(--oath); }
+.limits-card h2 { font-size: 20px; margin-bottom: 12px; }
+
+.page-title .intro-tagline { margin-top: 10px; font-weight: 600; color: var(--ink) !important; }
+.page-title p + p { margin-top: 8px; }
