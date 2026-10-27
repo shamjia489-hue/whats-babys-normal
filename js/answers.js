@@ -67,8 +67,8 @@ function renderFallback(question) {
   }
   out.innerHTML = `
     <p class="q">${esc(question)}</p>
-    <p class="notice">The guidance assistant isn't available right now, so here are the sources from the library that best match your question.</p>
-    ${sourcesHTML(matches, "Matching sources")}`;
+    <p class="notice">Here's what the NHS and Mayo Clinic sources in the library say about this. If you're worried, speak to your health visitor or GP, or NHS 111 for urgent advice.</p>
+    ${sourcesHTML(matches, "What the guidance says")}`;
 }
 
 async function ask(question) {
